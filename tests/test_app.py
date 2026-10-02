@@ -99,6 +99,7 @@ class HelpdeskTest(unittest.TestCase):
             self.assertEqual(self.client.get(url).status_code, 200, url)
         self.assertEqual(self.client.get('/tickets/999').status_code,404)
         self.assertEqual(self.client.get('/assets/999/edit').status_code,404)
+        self.assertEqual(self.client.get('/does-not-exist').status_code,404)
 
     def test_resolution_validation_preserves_data(self):
         self.post('/tickets/new', self.ticket())
@@ -131,6 +132,7 @@ class HelpdeskTest(unittest.TestCase):
 
     def test_csrf_and_output_escaping(self):
         self.assertEqual(self.client.post('/tickets/new',data=self.ticket()).status_code,400)
+        self.assertEqual(self.client.post('/tickets/new',data={**self.ticket(),'csrf_token':'invalid-非ascii'}).status_code,400)
         self.assertEqual(self.post('/tickets/new',self.ticket(title='<script>alert(1)</script>')).status_code,302)
         html = self.client.get('/tickets/1').data
         self.assertIn(b'&lt;script&gt;',html)

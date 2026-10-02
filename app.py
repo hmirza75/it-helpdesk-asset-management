@@ -34,7 +34,7 @@ def create_app(test_config=None):
         if 'csrf_token' not in session:
             session['csrf_token'] = secrets.token_hex(32)
         if request.method == 'POST' and not secrets.compare_digest(
-                session['csrf_token'], request.form.get('csrf_token', '')):
+                session['csrf_token'].encode(), request.form.get('csrf_token', '').encode()):
             abort(400, 'The form expired. Reload the page and try again.')
 
     @app.context_processor
@@ -219,4 +219,4 @@ def like_pattern(value):
 app = create_app()
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=False)
+    app.run(host='127.0.0.1', port=int(os.environ.get('PORT', '5057')), debug=False)
