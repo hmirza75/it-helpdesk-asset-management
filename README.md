@@ -36,7 +36,12 @@ Flask is the only direct third-party runtime dependency. No ORM, Node build, Jav
 
 ## Installation and run
 
-Install Python 3.12+ and Git, then open a terminal in this project directory. If cloning from GitHub, clone your repository and enter its directory first.
+Install Python 3.12+ and Git, then clone the repository and enter its directory:
+
+```bash
+git clone https://github.com/hmirza75/it-helpdesk-asset-management.git
+cd it-helpdesk-asset-management
+```
 
 ### Windows PowerShell
 
@@ -153,9 +158,11 @@ Basic measures include parameterized queries, HTML escaping, per-session form to
 
 Reasonable future work: pagination, optimistic edit conflict detection, assignment history, richer test coverage, and schema migrations. Authentication/roles, deployment, and notifications would require a separate scope and review.
 
-## GitHub preparation
+## Repository and development history
 
-The project includes logical commits for schema setup, application features, tests, fixes, and documentation. Dates were not changed. No remote repository was created or pushed.
+Repository: [hmirza75/it-helpdesk-asset-management](https://github.com/hmirza75/it-helpdesk-asset-management).
+
+The project includes logical commits for schema setup, application features, tests, fixes, and documentation. Dates were not changed.
 
 Git had no configured author identity in the build environment, so the existing commits use the explicit local placeholder **Portfolio Developer <portfolio@example.invalid>**. Set your own name and verified GitHub or GitHub-provided private email for future commits:
 
@@ -164,11 +171,4 @@ git config user.name "Your Name"
 git config user.email "YOUR_GITHUB_EMAIL"
 ```
 
-Create an empty GitHub repository named `it-helpdesk-asset-management` (without an initial README), then replace `YOUR_USERNAME` below:
-
-```bash
-git remote add origin https://github.com/YOUR_USERNAME/it-helpdesk-asset-management.git
-git push -u origin main
-```
-
-Sign in through Git's normal credential flow if prompted. The `.venv`, local database, and environment files are excluded from Git; recruiters can recreate demo data with `seed-demo`.
+The `.venv`, local database, and environment files are excluded from Git; recruiters can recreate demo data with `seed-demo`. Screenshots, tests, setup instructions, and the interview walkthrough are included in the repository.
